@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="aop" location="10,10" size="170,92">
+    <action name="ShowApplyOutAction" location="10,20" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="shenpi_out.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="message.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="shenpi_out.jsp" path="/functionpags/apply/shenpi_out.jsp" location="350,50" size="150,55" />
+  <webResource name="message.jsp" path="/functionpags/apply/message.jsp" location="50,200" size="150,55" />
+</Struts2Diagram>
+

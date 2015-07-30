@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<context:property-placeholder location="classpath:db.properties" />
+	<!-- 声明c3p0的数据连接 -->
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${driver}"></property>
+		<property name="user" value="${username}"></property>
+		<property name="jdbcUrl" value="${url}"></property>
+		<property name="password" value="${password}"></property>
+		<property name="maxPoolSize" value="5"></property>
+		<property name="initialPoolSize" value="2"></property>
+		<property name="acquireIncrement" value="2"></property>
+	</bean>
+		
+	<bean id="sf"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+
+		<!-- 以下会将这上目录下的所有hbm.xml文件加载 -->
+		<!--
+		逐个添加的方法
+		<property name="mappingResources">
+			<list>
+				<value>cn/pdsu/bs/domain/User.hbm.xml</value>
+			</list>
+		</property>
+		 -->
+		 <!-- 以下会将这上目录下的所有hbm.xml文件加载 -->
+		 <property name="mappingDirectoryLocations">
+		 	<list>
+		 		<value>classpath:cn/pdsu/bs/domain</value>
+		 	</list>
+		 </property>
+		
+		 <property name="hibernateProperties"> <props> <prop
+			key="hibernate.show_sql">true</prop> <prop
+			key="hibernate.format_sql">true</prop> </props> 
+			</property>
+		
+	<!--<property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+	-->
+	</bean>
+		<!-- 声明事务的管理者 -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sf"></property>
+	</bean>
+	<!--
+	
+	 声明通知 
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	 切面 
+	
+		<aop:config> <aop:pointcut expression="execution(*
+		cn..service.*Service.*(..))" id="cut"/> <aop:advisor
+		advice-ref="txAdvice" pointcut-ref="cut"/> </aop:config>
+	
+	
+
+-->
+</beans>
+
+

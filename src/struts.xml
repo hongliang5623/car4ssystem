@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="pdsu" namespace="/" extends="struts-default">
+	  
+		<action name="loginAction" class="useraction">
+			<result name="success">/main.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		<action name="savePackageAction" class="savecarpaction">
+			<result name="success">/functionpags/custombuss/taocan.jsp</result>
+		</action>
+		<action name="ShowPackageAction" class="showpackageaction">
+			<result name="success">/functionpags/history/check_taocan.jsp</result>
+		</action>
+	</package>
+	<package name="pdsu2" namespace="/" extends="struts-default">
+		
+		<action name="SaveRepareAction" class="saverepareaction">
+			<result name="success">/functionpags/custombuss/message_repare.jsp</result>
+		</action>
+		
+		<action name="ShowOwnerAction" class="showowneraction">
+			<result name="success">/functionpags/custombuss/chakan.jsp</result>
+		</action>
+		<action name="AddOwnerAction" class="addowneraction">
+			<result name="success">/functionpags/custombuss/message_owner.jsp</result>
+		</action>
+		
+		<action name="ApplyOutAction" class="applyoutaction">
+			<result name="success">/functionpags/apply/apply_out.jsp</result>
+		</action>
+		
+		<action name="DeleteOwnerAction" class="deleteowneraction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">ShowOwnerAction</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+		
+	</package>
+	<package name="pdsu3" namespace="/" extends="struts-default">
+	    
+	   	 <interceptors>
+          <!-- 声明拦截器 -->
+          <interceptor name="perssionInterceptor" class="cn.pdsu.bs.utils.PerssionInterceptor"/>
+          </interceptors> 
+	    
+	    
+		<!-- 获取所有等待审批的出差请求 -->
+		<action name="ShowApplyOutAction" class="showappoutaction">
+			<result name="success">/functionpags/apply/shenpi_out.jsp</result>
+			<result name="error">/functionpags/apply/message.jsp</result>
+			<interceptor-ref name="perssionInterceptor"></interceptor-ref>
+		</action>
+		
+		
+       
+		<!-- 获取所有审批通过的出差请求 -->
+		<action name="ShowOutPassAction" class="showoutpassaction">
+			<result name="success">/functionpags/apply/pass_out.jsp</result>
+		</action>
+		
+		<action name="CheckApplyOutAction" class="checkapplyoutaction">
+			<result name="success">/functionpags/apply/check_out.jsp</result>
+		</action>
+		
+		<action name="ShenpiApplyOutAction" class="shenpiapplyoutaction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">ShowApplyOutAction</param>
+			<param name="namespace">/</param>
+		</result>
+		</action>
+		
+		<action name="SaveApplyRepareAction" class="saveapplyrepareaction">
+			<result name="success">/functionpags/apply/apply_repair.jsp</result>
+		</action>
+		
+		<action name="SaveBaoyangAction" class="savebaoyangaction">
+			<result name="success">/functionpags/custombuss/baoyangd.jsp</result>
+		</action>
+	</package>
+	
+	<package name="pdsu4" namespace="/" extends="struts-default">
+	
+	  <interceptors>
+       <!-- 声明拦截器 -->
+       <interceptor name="perssionInterceptor" class="cn.pdsu.bs.utils.PerssionInterceptor"/>
+       </interceptors> 
+	<action name="ShowApplyrRepairAction" class="showapplyrepairaction">
+		<result name="success">/functionpags/apply/shenpi_repair.jsp</result>
+		<result name="error">/functionpags/apply/message.jsp</result>
+			<interceptor-ref name="perssionInterceptor"></interceptor-ref>
+	</action>
+	
+	<action name="CheckApplyRepareAction" class="checkapplyrepareaction">
+		<result name="success">/functionpags/apply/check_repair.jsp</result>
+	</action>
+	
+	<action name="ShenpiApplyRepareAction" class="shenpiapplyrepareaction">
+		<result name="success" type="redirectAction">
+			<param name="actionName">ShowApplyrRepairAction</param>
+			<param name="namespace">/</param>
+		</result>
+	</action>
+	<!-- 工具申请保存 -->
+	<action name="SaveApplyToolsAction" class="saveapplytoolsaction">
+		<result name="success">/functionpags/apply/apply_tool.jsp</result>
+	</action>	
+	<!-- 工具 获取所有-->
+	<action name="ShowApplyToolsAction" class="showapplytoolsaction">
+		<result name="success">/functionpags/apply/shenpi_tool.jsp</result>
+		<result name="error">/functionpags/apply/message.jsp</result>
+		<interceptor-ref name="perssionInterceptor"></interceptor-ref>
+	</action>
+	<!-- 工具 获取审批通过-->
+	<action name="ShowToolsPassAction" class="showtoolspassaction">
+	<result name="success">/functionpags/apply/pass_tool.jsp</result>
+	</action>
+	<action name="CheckApplyToolsAction" class="checkapplytoolsaction">
+	<result name="success">/functionpags/apply/check_tools.jsp</result>
+	</action>
+	<action name="ShenpiApplyToolsAction" class="shenpiapplytoolsaction">
+		<result name="success" type="redirectAction">
+		<param name="actionName">ShowApplyToolsAction</param>
+		<param name="namespace">/</param>
+		</result>
+	</action>
+	
+	</package>
+	
+	<package name="pdsu5" namespace="/" extends="struts-default">
+	
+	<action name="ShowBaoyangAction" class="showbaoyangaction">
+	<result name="success">/functionpags/history/show_baoyang.jsp</result>
+	</action>
+	
+	<action name="ShowRepareAction" class="showrepareaction">
+	<result name="success">/functionpags/history/show_repare.jsp</result>
+	</action>
+	<!-- 检查出差审批 -->
+	<action name="ShowReadOutAction" class="showreadoutaction">
+	<result name="success">/functionpags/apply/read_out.jsp</result>
+	<result name="error">/functionpags/apply/tongzhi_message.jsp</result>
+	</action>
+	<action name="CheckReadOutAction" class="checkreadoutaction">
+	<result name="success">/functionpags/apply/tongzhi_out.jsp</result>
+	</action>
+	<!-- 检查维修审批 -->
+	<action name="ShowReadRepareAction" class="showreadrepareaction">
+	<result name="success">/functionpags/apply/read_repair.jsp</result>
+	<result name="error">/functionpags/apply/tongzhi_message.jsp</result>
+	</action>
+	
+	<action name="CheckReadRepareAction" class="checkreadrepareaction">
+	<result name="success">/functionpags/apply/tongzhi_repair.jsp</result>
+	</action>
+	
+	</package>
+	<package name="pdsu6" namespace="/" extends="struts-default">
+	<!-- 检查零件审批 -->
+	<action name="ShowReadToolsAction" class="showreadtoolsaction">
+	<result name="success">/functionpags/apply/read_tool.jsp</result>
+	<result name="error">/functionpags/apply/tongzhi_message.jsp</result>
+	</action>
+	<action name="CheckReadToolsAction" class="checkreadtoolsaction">
+	<result name="success">/functionpags/apply/tongzhi_tool.jsp</result>
+	</action>
+	
+	<action name="CheckOwnerAction" class="checkowneraction">
+	<result name="success">/functionpags/custombuss/check_ownermessage.jsp</result>
+	</action>
+	
+	<action name="FindOwnerAction" class="findowneraction">
+	<result name="success">/functionpags/custombuss/check_ownermessage.jsp</result>
+	<result name="error" type="chain">
+		<param name="actionName">ShowOwnerAction</param>
+		<param name="namespace">/</param>
+	</result>
+	</action>
+	
+	</package>
+	 <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	 <!--
+	 <include file="cn/pdsu/bs/utils/struts_aop.xml"></include>
+-->
+</struts>

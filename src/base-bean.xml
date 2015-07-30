@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+     
+	<bean id="userDao" class="cn.pdsu.bs.daoImpl.UserDaoImpl">
+		<property name="sessionFactory" ref="sf"></property>
+	</bean>
+	<bean id="userservice" class="cn.pdsu.bs.serviceImpl.UserServiceImpl">
+		<property name="dao" ref="userDao"></property>
+		
+	</bean>
+	
+	<bean id="ownerDao" class="cn.pdsu.bs.daoImpl.OwnerDaoImpl">
+		<property name="sessionFactory" ref="sf"></property>
+		<property name="pagedao" ref="pagedaoimpl"></property>	
+	</bean>
+	
+	<bean id="ownerservice" class="cn.pdsu.bs.serviceImpl.OwnerServiceImpl">
+		<property name="dao" ref="ownerDao"></property>
+	</bean>
+	
+	<bean id="useraction" class="cn.pdsu.bs.action.UserAction" scope="prototype">
+		<property name="serviceu" ref="userservice"></property>
+		<property name="serviceo" ref="ownerservice"></property>
+	</bean>
+	<!-- 一下是套餐 -->
+	<bean id="packageDao" class="cn.pdsu.bs.daoImpl.PackageDaoImpl">
+		<property name="sessionFactory" ref="sf"></property>
+		<property name="pagedao" ref="pagedaoimpl"></property>	
+	</bean>
+	<bean id="packageservice" class="cn.pdsu.bs.serviceImpl.PackageServiceImpl">
+		<property name="dao" ref="packageDao"></property>
+	</bean>
+	<bean id="savecarpaction" class="cn.pdsu.bs.action.SavePackageAction">
+		<property name="packservice" ref="packageservice"></property>
+	</bean>
+	
+	<bean id="pagedaoimpl" class="cn.pdsu.bs.utils.PageDaoImpl">
+		<property name="sessionFactory" ref="sf"></property>
+	</bean>
+	
+	<bean id="showpackageaction" class="cn.pdsu.bs.action.ShowPackageAction">
+		<property name="service" ref="packageservice"></property>
+	</bean>
+	<!-- 以下是维修单 -->
+	<bean id="reparedao" class="cn.pdsu.bs.daoImpl.WeiXiuDaoImpl">
+		<property name="sessionFactory" ref="sf"></property>
+		<property name="pagedao" ref="pagedaoimpl"></property>
+	</bean>
+	<bean id="repareservice" class="cn.pdsu.bs.serviceImpl.RepareServiceImpl">
+		<property name="dao" ref="reparedao"></property>
+	</bean>
+	<bean id="saverepareaction" class="cn.pdsu.bs.action.SaveWeiXiuAction">
+		<property name="service" ref="repareservice"></property>
+	</bean>
+	<!-- 以下是获取所有车主 -->
+	<bean id="showowneraction" class="cn.pdsu.bs.action.ShowOwnerAction">
+		<property name="service" ref="ownerservice"></property>
+	</bean>
+	<!-- 以下是查看车主具体信息 -->
+	<bean id="checkowneraction" class="cn.pdsu.bs.action.CheckOwnerAction">
+		<property name="service" ref="ownerservice"></property>
+	</bean>
+	<bean id="findowneraction" class="cn.pdsu.bs.action.FindOwnerAction">
+		<property name="service" ref="ownerservice"></property>
+	</bean>
+	<!-- 以下是添加车主 -->
+	<bean id="addowneraction" class="cn.pdsu.bs.action.AddOwnerAction">
+		<property name="service" ref="ownerservice"></property>
+	</bean>
+	<!-- 以下是保存出差请求 -->
+	<bean id="applyoutdao" class="cn.pdsu.bs.daoImpl.ApplyOutDaoImpl">
+		<property name="sessionFactory" ref="sf"></property>
+	</bean>
+	<bean id="applyoutservice" class="cn.pdsu.bs.serviceImpl.ApplyOutServiceImpl">
+		<property name="dao" ref="applyoutdao"></property>
+	</bean>
+	<bean id="applyoutaction" class="cn.pdsu.bs.action.SaveApplyOutAction">
+		<property name="service" ref="applyoutservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+	</bean>
+	<!-- 以下是获取所有出差 -->
+	<bean id="showappoutaction" class="cn.pdsu.bs.action.ShowApplyOutAction">
+		<property name="service" ref="applyoutservice"></property>
+	</bean>
+	<!-- 以下是获取所有出差审批通过 -->
+	<bean id="showoutpassaction" class="cn.pdsu.bs.action.ShowOutPassAction">
+		<property name="service" ref="applyoutservice"></property>
+	</bean>
+	<!-- 以下是出差审批 -->
+	<bean id="checkapplyoutaction" class="cn.pdsu.bs.action.CheckApplyOutAction">
+		<property name="service" ref="applyoutservice"></property>
+	</bean>
+	<!-- 以下是出差审批提交 -->
+	<bean id="shenpiapplyoutaction" class="cn.pdsu.bs.action.ShenpiApplyOutAction">
+		<property name="service" ref="applyoutservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+	</bean>
+	<!-- 以下是删除车主 -->
+	<bean id="deleteowneraction" class="cn.pdsu.bs.action.DeleteOwnerAction">
+		<property name="service" ref="ownerservice"></property>
+	</bean>
+	<!-- 以下是维修申请 -->
+	<bean id="applyreparedao" class="cn.pdsu.bs.daoImpl.ApplyRepareDaoImpl">
+		<property name="sessionFactory" ref="sf"></property>
+	</bean>
+	<bean id="applyrepareservice" class="cn.pdsu.bs.serviceImpl.ApplyRepareServiceImpl">
+		<property name="dao" ref="applyreparedao"></property>
+	</bean>
+	<bean id="saveapplyrepareaction" class="cn.pdsu.bs.action.SaveApplyRepareAction">
+		<property name="service" ref="applyrepareservice"></property>
+		<property name="servicep" ref="packageservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+	</bean>
+	<!-- 以下是获取维修维修申请列表 -->
+	<bean id="showapplyrepairaction" class="cn.pdsu.bs.action.ShowApplyRepairAction">
+		<property name="service" ref="applyrepareservice"></property>
+	</bean>
+	<!-- 以下是查看看具体维修申请 -->
+	<bean id="checkapplyrepareaction" class="cn.pdsu.bs.action.CheckApplyRepareAction">
+		<property name="service" ref="applyrepareservice"></property>
+	</bean>
+	<!-- 以下是审批维修申请 -->
+	<bean id="shenpiapplyrepareaction" class="cn.pdsu.bs.action.ShenpiApplyRepareAction">
+		<property name="service" ref="applyrepareservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+		<property name="servicep" ref="packageservice"></property>
+	</bean>
+	<!-- 以下是零件使用申请 -->
+	<bean id="applytoolsdao" class="cn.pdsu.bs.daoImpl.ApplyToolsDaoImpl">
+		<property name="sessionFactory" ref="sf"></property>
+	</bean>
+	<bean id="applytoolsservice" class="cn.pdsu.bs.serviceImpl.ApplyToolsServiceImpl">
+		<property name="dao" ref="applytoolsdao"></property>
+	</bean>
+	<bean id="saveapplytoolsaction" class="cn.pdsu.bs.action.SaveApplyToolsAction">
+		<property name="service" ref="applytoolsservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+		<property name="servicer" ref="applyrepareservice"></property>
+	</bean>
+	<!-- 以下是获取所有零件申请列表 -->
+	<bean id="showapplytoolsaction" class="cn.pdsu.bs.action.ShowApplyToolsAction">
+		<property name="service" ref="applytoolsservice"></property>
+	</bean>
+	<!-- 以下是获取所有审批通过零件申请列表 -->
+	<bean id="showtoolspassaction" class="cn.pdsu.bs.action.ShowToolsPassAction">
+		<property name="service" ref="applytoolsservice"></property>
+	</bean>
+	<!-- 以下是查看具体零件申请单 -->
+	<bean id="checkapplytoolsaction" class="cn.pdsu.bs.action.CheckApplyToolsAction">
+		<property name="service" ref="applytoolsservice"></property>
+	</bean>
+	<!-- 以下是查看具体零件申请单 -->
+	<bean id="shenpiapplytoolsaction" class="cn.pdsu.bs.action.ShenpiApplyToolsAction">
+		<property name="service" ref="applytoolsservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+		<property name="servicer" ref="applyrepareservice"></property>
+	</bean>
+	<!-- 以下是获取保养单 -->
+	<bean id="baoyangdao" class="cn.pdsu.bs.daoImpl.BaoyangDaoImpl">
+		<property name="sessionFactory" ref="sf"></property>
+		<property name="pagedao" ref="pagedaoimpl"></property>
+	</bean>
+	<bean id="baoyangservice" class="cn.pdsu.bs.serviceImpl.BaoyangServiceImpl">
+		<property name="dao" ref="baoyangdao"></property>
+			
+	</bean>
+	<bean id="savebaoyangaction" class="cn.pdsu.bs.action.SaveBaoyangAction">
+		<property name="service" ref="baoyangservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+		<property name="serviceo" ref="ownerservice"></property>
+	</bean>
+	<!-- 以下是获取所有的保养单 -->
+	<bean id="showbaoyangaction" class="cn.pdsu.bs.action.ShowBaoyangAction">
+		<property name="service" ref="baoyangservice"></property>
+	</bean>
+	<bean id="showrepareaction" class="cn.pdsu.bs.action.ShowRepareAction">
+		<property name="service" ref="repareservice"></property>
+	</bean>
+	<!-- 测试action -->
+	<bean id="testaction" class="cn.pdsu.bs.action.TestApplyOutAction">
+		<property name="service" ref="applyoutservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+	</bean>
+	
+	<!-- 检查外出审批 -->
+	<bean id="showreadoutaction" class="cn.pdsu.bs.action.ShowReadOutAction">
+		<property name="service" ref="applyoutservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+	</bean>
+	<bean id="checkreadoutaction" class="cn.pdsu.bs.action.CheckReadOutAction">
+		<property name="service" ref="applyoutservice"></property>
+	</bean>
+	
+	<!-- 检查维修审批 -->
+	<bean id="showreadrepareaction" class="cn.pdsu.bs.action.ShowReadRepareAction">
+		<property name="service" ref="applyrepareservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+	</bean>
+	<bean id="checkreadrepareaction" class="cn.pdsu.bs.action.CheckReadRepareAction">
+		<property name="service" ref="applyrepareservice"></property>
+	</bean>
+	<!-- 检查领取零件审批 -->
+	<bean id="showreadtoolsaction" class="cn.pdsu.bs.action.ShowReadToolsAction">
+		<property name="service" ref="applytoolsservice"></property>
+		<property name="serviceu" ref="userservice"></property>
+	</bean>
+	<bean id="checkreadtoolsaction" class="cn.pdsu.bs.action.CheckReadToolsAction">
+		<property name="service" ref="applytoolsservice"></property>
+	</bean>
+</beans>
+
+

@@ -1,0 +1,2 @@
+1.涉及到外键延迟加载的有    lazy="false"  套餐 Carpackage  外出请求ApplyOut  车主使用套餐
+2.目前设计权限的只有审批，

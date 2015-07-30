@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="pdsu" location="50,50" size="170,271">
+    <action name="loginAction" location="10,20" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="main.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="login.jsp" />
+      </result>
+    </action>
+    <action name="savePackageAction" location="10,120" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="taocan.jsp" />
+      </result>
+    </action>
+    <action name="ShowPackageAction" location="10,220" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="check_taocan.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="pdsu2" location="350,50" size="170,471">
+    <action name="SaveRepareAction" location="10,20" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="message_repare.jsp" />
+      </result>
+    </action>
+    <action name="ShowOwnerAction" location="10,120" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="chakan.jsp" />
+      </result>
+    </action>
+    <action name="AddOwnerAction" location="10,220" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="message_owner.jsp" />
+      </result>
+    </action>
+    <action name="ApplyOutAction" location="10,320" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="apply_out.jsp" />
+      </result>
+    </action>
+    <action name="DeleteOwnerAction" location="10,420" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="ShowOwnerAction" namespace="/" />
+      </result>
+    </action>
+  </package>
+  <package name="pdsu3" location="650,50" size="170,571">
+    <action name="ShowApplyOutAction" location="10,20" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="shenpi_out.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="message.jsp" />
+      </result>
+    </action>
+    <action name="ShowOutPassAction" location="10,120" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="pass_out.jsp" />
+      </result>
+    </action>
+    <action name="CheckApplyOutAction" location="10,220" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="check_out.jsp" />
+      </result>
+    </action>
+    <action name="ShenpiApplyOutAction" location="10,320" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="ShowApplyOutAction" namespace="/" />
+      </result>
+    </action>
+    <action name="SaveApplyRepareAction" location="10,420" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="apply_repair.jsp" />
+      </result>
+    </action>
+    <action name="SaveBaoyangAction" location="10,520" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="baoyangd.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="pdsu4" location="50,200" size="170,771">
+    <action name="ShowApplyrRepairAction" location="10,20" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="shenpi_repair.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="message.jsp" />
+      </result>
+    </action>
+    <action name="CheckApplyRepareAction" location="10,120" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="check_repair.jsp" />
+      </result>
+    </action>
+    <action name="ShenpiApplyRepareAction" location="10,220" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="ShowApplyrRepairAction" namespace="/" />
+      </result>
+    </action>
+    <action name="SaveApplyToolsAction" location="10,320" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="apply_tool.jsp" />
+      </result>
+    </action>
+    <action name="ShowApplyToolsAction" location="10,420" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="shenpi_tool.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="message.jsp" />
+      </result>
+    </action>
+    <action name="ShowToolsPassAction" location="10,520" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="pass_tool.jsp" />
+      </result>
+    </action>
+    <action name="CheckApplyToolsAction" location="10,620" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="check_tools.jsp" />
+      </result>
+    </action>
+    <action name="ShenpiApplyToolsAction" location="10,720" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="ShowApplyToolsAction" namespace="/" />
+      </result>
+    </action>
+  </package>
+  <package name="pdsu5" location="350,200" size="170,371">
+    <action name="ShowBaoyangAction" location="10,20" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="show_baoyang.jsp" />
+      </result>
+    </action>
+    <action name="ShowRepareAction" location="10,120" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="show_repare.jsp" />
+      </result>
+    </action>
+    <action name="ShowReadOutAction" location="10,220" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="read_out.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="tongzhi_message.jsp" />
+      </result>
+    </action>
+    <action name="CheckReadOutAction" location="10,320" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="tongzhi_out.jsp" />
+      </result>
+    </action>
+    <action name="ShowReadRepareAction" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="read_repair.jsp" />
+      </result>
+    </action>
+    <action name="CheckReadRepareAction" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="tongzhi_repair.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="pdsu6" location="0,0" size="0,0">
+    <action name="ShowReadToolsAction" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="read_tool.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="tongzhi_message.jsp" />
+      </result>
+    </action>
+    <action name="CheckReadToolsAction" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="tongzhi_tool.jsp" />
+      </result>
+    </action>
+    <action name="CheckOwnerAction" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="check_ownermessage.jsp" />
+      </result>
+    </action>
+    <action name="FindOwnerAction" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="check_ownermessage.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="ShowOwnerAction" namespace="/" />
+      </result>
+    </action>
+  </package>
+  <webResource name="main.jsp" path="/main.jsp" location="650,200" size="150,55" />
+  <webResource name="login.jsp" path="/login.jsp" location="50,350" size="150,55" />
+  <webResource name="taocan.jsp" path="/functionpags/custombuss/taocan.jsp" location="200,350" size="150,55" />
+  <webResource name="check_taocan.jsp" path="/functionpags/history/check_taocan.jsp" location="500,350" size="150,55" />
+  <webResource name="message_repare.jsp" path="/functionpags/custombuss/message_repare.jsp" location="50,500" size="150,55" />
+  <webResource name="chakan.jsp" path="/functionpags/custombuss/chakan.jsp" location="500,500" size="150,55" />
+  <webResource name="message_owner.jsp" path="/functionpags/custombuss/message_owner.jsp" location="50,650" size="150,55" />
+  <webResource name="apply_out.jsp" path="/functionpags/apply/apply_out.jsp" location="500,650" size="150,55" />
+  <webResource name="shenpi_out.jsp" path="/functionpags/apply/shenpi_out.jsp" location="50,800" size="150,55" />
+  <webResource name="pass_out.jsp" path="/functionpags/apply/pass_out.jsp" location="350,800" size="150,55" />
+  <webResource name="check_out.jsp" path="/functionpags/apply/check_out.jsp" location="650,800" size="150,55" />
+  <webResource name="apply_repair.jsp" path="/functionpags/apply/apply_repair.jsp" location="50,950" size="150,55" />
+  <webResource name="baoyangd.jsp" path="/functionpags/custombuss/baoyangd.jsp" location="350,950" size="150,55" />
+  <webResource name="shenpi_repair.jsp" path="/functionpags/apply/shenpi_repair.jsp" location="650,950" size="150,55" />
+  <webResource name="check_repair.jsp" path="/functionpags/apply/check_repair.jsp" location="50,1100" size="150,55" />
+  <webResource name="apply_tool.jsp" path="/functionpags/apply/apply_tool.jsp" location="350,1100" size="150,55" />
+  <webResource name="shenpi_tool.jsp" path="/functionpags/apply/shenpi_tool.jsp" location="650,1100" size="150,55" />
+  <webResource name="pass_tool.jsp" path="/functionpags/apply/pass_tool.jsp" location="50,1250" size="150,55" />
+  <webResource name="check_tools.jsp" path="/functionpags/apply/check_tools.jsp" location="350,1250" size="150,55" />
+  <webResource name="show_baoyang.jsp" path="/functionpags/history/show_baoyang.jsp" location="650,1250" size="150,55" />
+  <webResource name="show_repare.jsp" path="/functionpags/history/show_repare.jsp" location="50,1400" size="150,55" />
+  <webResource name="tongzhi_message.jsp" path="/functionpags/apply/tongzhi_message.jsp" location="350,1400" size="150,55" />
+  <webResource name="read_out.jsp" path="/functionpags/apply/read_out.jsp" location="650,1400" size="150,55" />
+  <webResource name="check_read_out.jsp" path="/functionpags/apply/check_read_out.jsp" location="50,1550" size="150,55" />
+  <webResource name="read_Repair.jsp" path="/functionpags/apply/read_Repair.jsp" location="0,0" size="0,0" />
+  <webResource name="check_read_Repair.jsp" path="/functionpags/apply/check_read_Repair.jsp" location="0,0" size="0,0" />
+  <webResource name="read_repair.jsp" path="/functionpags/apply/read_repair.jsp" location="0,0" size="0,0" />
+  <webResource name="check_read_repair.jsp" path="/functionpags/apply/check_read_repair.jsp" location="0,0" size="0,0" />
+  <webResource name="tongzhi_out.jsp" path="/functionpags/apply/tongzhi_out.jsp" location="0,0" size="0,0" />
+  <webResource name="tongzhi_repair.jsp" path="/functionpags/apply/tongzhi_repair.jsp" location="0,0" size="0,0" />
+  <webResource name="read_tool.jsp" path="/functionpags/apply/read_tool.jsp" location="0,0" size="0,0" />
+  <webResource name="tongzhi_tool.jsp" path="/functionpags/apply/tongzhi_tool.jsp" location="0,0" size="0,0" />
+  <webResource name="message.jsp" path="/functionpags/apply/message.jsp" location="0,0" size="0,0" />
+  <webResource name="check_ownermessage.jsp" path="/functionpags/custombuss/check_ownermessage.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+
