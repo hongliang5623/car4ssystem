@@ -19,3 +19,15 @@ Content is so messy,i don't want say much
 | 管线        |    \$1    |  234  |
 
 ## 2.访问[我的主页](https://github.com/hongliang5623/Operation)
+## 3.高亮说明
+```python
+@requires_authorization
+class SomeClass:
+    pass
+
+if __name__ == '__main__':
+    # A comment
+    print 'hello world'
+```
+## 4.重点显示
+ 使用`Ctrl + M`
